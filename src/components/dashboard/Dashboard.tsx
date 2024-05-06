@@ -12,8 +12,8 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import Chart from './Chart';
 import Deposits from './Deposits';
-import Orders from './Orders';
-
+import TradeList from './TradeList';
+const tradingPairs = ['bnbbtc', 'ethbtc', 'ltcbtc'];
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -85,7 +85,7 @@ export default function Dashboard() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
+  const [currentPair, setCurrentPair] = React.useState('bnbbtc');
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -152,7 +152,7 @@ export default function Dashboard() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
+                  <TradeList pair={currentPair} />
                 </Paper>
               </Grid>
             </Grid>
