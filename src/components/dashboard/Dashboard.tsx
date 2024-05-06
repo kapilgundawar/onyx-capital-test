@@ -81,8 +81,9 @@ export default function Dashboard() {
                   }}
                 >
                   <FormControl fullWidth sx={{ marginBottom: "16px" }}>
-                    <InputLabel>Trading Pair</InputLabel>
+                    <InputLabel htmlFor="trading-pair-select">Trading Pair</InputLabel>
                     <Select
+                      id="trading-pair-select"
                       value={currentPair}
                       onChange={(e) => setCurrentPair(e.target.value)}
                       label="Trading Pair"
