@@ -1,9 +1,8 @@
 import * as React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import AppBar from "@mui/material/AppBar";
 import {
-  Link,
   Paper,
   Grid,
   Container,
@@ -16,24 +15,11 @@ import {
   FormControl,
 } from "@mui/material";
 import PriceChange from "./PriceChange";
-import Chart from "./Chart";
+import PriceChart from "./PriceChart";
 import TradeList from "./TradeList";
 
 const tradingPairs = ["bnbbtc", "ethbtc", "ltcbtc"];
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-}));
 
 const defaultTheme = createTheme();
 
@@ -43,7 +29,7 @@ export default function Dashboard() {
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar position="absolute" open={false}>
+        <AppBar position="absolute" >
           <Toolbar>
             <Typography
               component="h1"
@@ -81,7 +67,7 @@ export default function Dashboard() {
                     height: 240,
                   }}
                 >
-                  <Chart />
+                  <PriceChart pair={currentPair} />
                 </Paper>
               </Grid>
               {/* Recent Price */}
